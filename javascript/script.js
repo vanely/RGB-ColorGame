@@ -1,13 +1,3 @@
-var colors = [
-  "rgb(255, 0, 0)",
-  "rgb(255, 255, 0)",
-  "rgb(0, 255, 0)",
-  "rgb(0, 255, 255)",
-  "rgb(0, 0, 255)",
-  "rgb(255, 0, 255)"
-]
-
-//takes number of coolrs in array to generate
 var numSquares = 6;
 var colors = generateRandomColors(numSquares);
 var h1 = document.querySelector("h1");
@@ -16,9 +6,9 @@ var colorDisp = document.querySelector("#color_disp");
 var message = document.getElementById("message");
 var reset = document.getElementById("reset");
 var mode = document.getElementsByClassName("mode");
-// var easy = document.querySelector("#easy");
-// var hard = document.querySelector("#hard");
+
 var pickedColor = pickColor();
+
 init();
 
 function init()
@@ -27,6 +17,7 @@ function init()
   setupSquares();
 }
 
+//assign the classes needed for the modes(difficulty) 
 function setupModes()
 {
   for(var i = 0; i < mode.length; i++)
@@ -36,28 +27,19 @@ function setupModes()
       mode[0].classList.remove("selected");
       mode[1].classList.remove("selected");
       this.classList.add("selected");
-      // if(this.textContent === "Easy")
-      // {
-      //   numSquares = 3;
-      // }
-      // else
-      // {
-      //   numSquares = 6;
-      // }
       this.textContent === "Easy" ? numSquares = 3: numSquares = 6;
       reload();
     });
   }
 }
 
+//assgin all of the colors to display on the squares
 function setupSquares()
 {
   for(var i = 0; i < squares.length; i++)
   {
-    // add initial colors to squares
     squares[i].style.background = colors[i];
 
-    //add click listeners to squares
     squares[i].addEventListener("click", function()
     {
       var clickedColor = this.style.background;
@@ -77,6 +59,7 @@ function setupSquares()
   }
 }
 
+//set values back to their original states
 function reload()
 {
   reset.textContent = "new colors";
@@ -101,73 +84,16 @@ function reload()
   h1.style.background = "steelblue";
 }
 
-// function shortened_2()
-// {
-//   // easy.addEventListener("click", function()
-//   // {
-//   //   reset.textContent = "new colors";
-//   //   message.textContent = "";
-//   //   hard.classList.remove("selected");
-//   //   easy.classList.add("selected");
-//   //   h1.style.background = "steelblue";
-//   //   numSquares = 3;
-//   //   colors = generateRandomColors(numSquares);
-//   //   pickedColor = pickColor();
-//   //   colorDisp.textContent = pickedColor;
-//   //   for(var i = 0; i < squares.length; i++)
-//   //   {
-//   //     if(colors[i])
-//   //     {
-//   //       squares[i].style.background = colors[i];
-//   //     }
-//   //     else
-//   //     {
-//   //       squares[i].style.display = "none";
-//   //     }
-//   //   }
-//   // });
-//   //
-//   // hard.addEventListener("click", function()
-//   // {
-//   //   reset.textContent = "new colors";
-//   //   message.textContent = "";
-//   //   hard.classList.add("selected");
-//   //   easy.classList.remove("selected");
-//   //   h1.style.background = "steelblue";
-//   //   numSquares = 6;
-//   //   colors = generateRandomColors(numSquares);
-//   //   pickedColor = pickColor();
-//   //   colorDisp.textContent = pickedColor;
-//   //   for(var i = 0; i < squares.length; i++)
-//   //   {
-//   //     squares[i].style.background = colors[i];
-//   //     squares[i].style.display = "block";
-//   //   }
-//   // });
-// }
-
+//apply reload function to 
 reset.addEventListener("click", function()
 {
-  // function shortened_1()
-  // {
-  //   // //window.location.reload(true);
-  //   // this.textContent = "new colors";
-  //   // message.textContent =  "";
-  //   // colors = generateRandomColors(numSquares);
-  //   // pickedColor = pickColor();
-  //   // colorDisp.textContent = pickedColor;
-  //   // h1.style.background = "steelblue";
-  //   //
-  //   // for(var i = 0; i < squares.length; i++)
-  //   // {
-  //   //   squares[i].style.background = colors[i];
-  //   // }
-  // }
   reload();
 });
+
+//display picked color's RGB code at the top of the app
 colorDisp.textContent = pickedColor;
 
-//changes colors of all squares to correct picked color
+//set generated colors to div backgrounds
 function changeColors(color)
 {
   for(var i = 0; i < squares.length; i++)
@@ -175,12 +101,15 @@ function changeColors(color)
     squares[i].style.background = color;
   }
 }
-//picks random color
+
+//randomly choose one of the generated colors to be the picked color
 function pickColor()
 {
   var random  = Math.floor(Math.random() * colors.length);
   return colors[random]
 }
+
+//generate amount of colors needed for all divs 
 function generateRandomColors(num)
 {
   var arr = [];
@@ -191,6 +120,7 @@ function generateRandomColors(num)
   return arr;
 }
 
+//color genetator
 function randomColor()
 {
   var r = Math.floor(Math.random() * 256);
