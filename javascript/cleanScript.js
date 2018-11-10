@@ -1,12 +1,3 @@
-var colors = [
-  "rgb(255, 0, 0)",
-  "rgb(255, 255, 0)",
-  "rgb(0, 255, 0)",
-  "rgb(0, 255, 255)",
-  "rgb(0, 0, 255)",
-  "rgb(255, 0, 255)"
-]
-
 var numSquares = 6;
 var colors = generateRandomColors(numSquares);
 var h1 = document.querySelector("h1");
@@ -17,6 +8,7 @@ var reset = document.getElementById("reset");
 var mode = document.getElementsByClassName("mode");
 
 var pickedColor = pickColor();
+
 init();
 
 function init()
@@ -25,6 +17,7 @@ function init()
   setupSquares();
 }
 
+//assign the classes needed for the modes(difficulty) 
 function setupModes()
 {
   for(var i = 0; i < mode.length; i++)
@@ -40,6 +33,7 @@ function setupModes()
   }
 }
 
+//assgin all of the colors to display on the squares
 function setupSquares()
 {
   for(var i = 0; i < squares.length; i++)
@@ -65,6 +59,7 @@ function setupSquares()
   }
 }
 
+//set values back to their original states
 function reload()
 {
   reset.textContent = "new colors";
@@ -89,12 +84,16 @@ function reload()
   h1.style.background = "steelblue";
 }
 
+//apply reload function to 
 reset.addEventListener("click", function()
 {
   reload();
 });
+
+//display picked color's RGB code at the top of the app
 colorDisp.textContent = pickedColor;
 
+//set generated colors to div backgrounds
 function changeColors(color)
 {
   for(var i = 0; i < squares.length; i++)
@@ -103,11 +102,14 @@ function changeColors(color)
   }
 }
 
+//randomly choose one of the generated colors to be the picked color
 function pickColor()
 {
   var random  = Math.floor(Math.random() * colors.length);
   return colors[random]
 }
+
+//generate amount of colors needed for all divs 
 function generateRandomColors(num)
 {
   var arr = [];
@@ -118,6 +120,7 @@ function generateRandomColors(num)
   return arr;
 }
 
+//color genetator
 function randomColor()
 {
   var r = Math.floor(Math.random() * 256);
