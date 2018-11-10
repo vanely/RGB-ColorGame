@@ -3,7 +3,7 @@ Given a randomly generated RGB code can you choose which of the possibilities ar
 
 **Link to project:** http://recruiters-love-seeing-live-demos.com/
 
-![alt tag](RGBGame.png)
+![alt tag](RGB-Game.png)
 
 ## How It's Made:
 
