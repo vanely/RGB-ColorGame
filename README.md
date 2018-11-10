@@ -1,7 +1,7 @@
 # RGB-ColorGame
 Given a randomly generated RGB code can you choose which of the possibilities are the correct displayed RGB code?
 
-**Link to project:** http://recruiters-love-seeing-live-demos.com/
+**Link to project:** https://lucid-turing-758f1e.netlify.com/
 
 ![alt tag](RGB-Game.png)
 
